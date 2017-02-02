@@ -18,7 +18,7 @@ services:
     volumes_from:
       - app
   app:
-    image: ${{build_image}}
+    image: codefresh/java-spring-mvc-jdbc:master
     volumes:
       - wars:/opt/tomcat/webapps
     links:

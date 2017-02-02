@@ -15,64 +15,15 @@ steps:
       title: Building Image
       type: build
       #Important: rename this image to to a valid repository in your registry. For example: myUserName/vote
-      image_name: ncodefresh/java-spring-mvc-jdbc
+      image_name: codefresh/java-spring-mvc-jdbc
 
       #Dockerfile location should be relative to the working directory
       dockerfile: Dockerfile
       tag: ${{CF_BRANCH}}
 
-    push_to_registry:
-      title: Pushing to Docker Registry
-      type: push
-
-      #A candidate is the image that we want to push to registry
-      candidate: '${{build_image}}'
-
-      # You can push the image with whatever tag you want. In our example we use CF_BRANCH, which is a variable in
-      # the build process, accessible throughout the entire flow.
-      tag: '${{CF_BRANCH}}'
-      fail_fast: false
-
-    integration_test:
-        title: Integration tests
-        type: composition
-        composition: docker-compose.yml
-        composition-candidates:
-          main:
-            image: nhoag/curl
-            command: bash -c "sleep 20 && curl http://tomcat:8080/" | echo 'works'
-
     launch_composition:
       title: Launch composition
       type: launch-composition
-      composition:
-        version: '2'
-        services:
-          database:
-            image: mysql:latest
-            ports:
-              - 3306
-            environment:
-              MYSQL_ROOT_PASSWORD: admin
-              MYSQL_USER: test
-              MYSQL_PASSWORD: admin
-              MYSQL_DATABASE: contactdb
-          tomcat:
-            image: ncodefresh/tomcat7:7.0.75
-            ports:
-              - 8080
-            links:
-              - app
-            volumes_from:
-              - app
-          app:
-            image: ${{build_image}}
-            volumes:
-              - wars:/opt/tomcat/webapps
-            links:
-              - database
-        volumes:
-          wars:
-            driver: local
+      composition: docker-compose.yml
       environment_name: 'java-spring-mvc-jdbc'
       entry_point: tomcat
