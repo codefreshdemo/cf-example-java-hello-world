@@ -1,0 +1,28 @@
+version: '2'
+services:
+  database:
+    image: mysql:latest
+    ports:
+      - 3306
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_USER: test
+      MYSQL_PASSWORD: admin
+      MYSQL_DATABASE: contactdb
+  tomcat:
+    image: ncodefresh/tomcat7:7.0.75
+    ports:
+      - 8080
+    links:
+      - app
+    volumes_from:
+      - app
+  app:
+    image: ${{build_image}}
+    volumes:
+      - wars:/opt/tomcat/webapps
+    links:
+      - database
+volumes:
+  wars:
+    driver: local
