@@ -4,25 +4,18 @@ steps:
 
     unit_test:
       title: Unit Tests
-      # The image from which the executable container is created. It can be an explicit ID of a Docker image,
-      # or a variable that references a Build or Push step.
       image: maven:latest
-      # One or more bash commands to execute your tests.
       commands:
         - mvn -version
 
     build_image:
       title: Building Image
       type: build
-      #Important: rename this image to to a valid repository in your registry. For example: myUserName/vote
+      dockerfile: Dockerfile
       image_name: codefresh/java-spring-mvc-jdbc
 
-      #Dockerfile location should be relative to the working directory
-      dockerfile: Dockerfile
-      tag: ${{CF_BRANCH}}
-
     launch_composition:
-      title: Launch composition
+      title: Launch Composition
       type: launch-composition
       composition: docker-compose.yml
       environment_name: 'java-spring-mvc-jdbc'
