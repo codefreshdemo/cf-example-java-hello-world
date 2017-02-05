@@ -10,7 +10,7 @@ services:
       MYSQL_PASSWORD: admin
       MYSQL_DATABASE: contactdb
   tomcat:
-    image: ncodefresh/tomcat7:7.0.75
+    image: codefreshio/tomcat
     ports:
       - 8080
     links:
