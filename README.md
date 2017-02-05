@@ -61,7 +61,7 @@ Launching compositions within Codefresh means you have your very own staging are
 
 Using the `composition` field, we direct Codefresh to the location if the `docker-compose` file in our repository.
 
-Once the Launch Composition step has completed successfully, you'll be able to review and share your running composition in the https://docs.codefresh.io/docs/share-environment-with-your-test[Environments page].
+Once the Launch Composition step has completed successfully, you'll be able to review and share your running composition in the [Environments page](https://docs.codefresh.io/docs/share-environment-with-your-test).
 
 Now that we've gotten a grip on the flow, let's get cracking!
 
