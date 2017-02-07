@@ -69,10 +69,10 @@ Now that we've gotten a grip on the flow, let's get cracking!
 
 To use this example:
 
-. Fork this repository to your own [INSERT_SCM_SYSTEM (git, bitbucket)] account.
-. Log in to Codefresh using your [INSERT_SCM_SYSTEM (git, bitbucket)] account.
-. Click the `Add Service` button.
-. Select the forked repository.
-. Select the `I have a Codefresh.yml file` option.
-. Complete the wizard.
-. Rejoice!
+* Fork this repository to your own [INSERT_SCM_SYSTEM (git, bitbucket)] account.
+* Log in to Codefresh using your [INSERT_SCM_SYSTEM (git, bitbucket)] account.
+* Click the `Add Service` button.
+* Select the forked repository.
+* Select the `I have a Codefresh.yml file` option.
+* Complete the wizard.
+* Rejoice!
