@@ -11,7 +11,7 @@ steps:
     build_image:
       title: Building Image
       type: build
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.gradle
       image_name: codefresh/java-spring-mvc-jdbc
 
     launch_composition:

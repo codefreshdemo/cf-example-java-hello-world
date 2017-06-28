@@ -1,0 +1,23 @@
+FROM gradle:jdk8
+
+USER root
+
+COPY . /app
+
+WORKDIR /app
+
+RUN chmod 777 * -R
+
+RUN ls -l
+
+RUN gradle build
+
+RUN mkdir -p /opt/tomcat/webapps/
+
+RUN ls -l build/libs/
+
+RUN cp build/libs/ROOT.war /opt/tomcat/webapps/
+
+RUN ls -l /opt/tomcat/webapps/
+
+EXPOSE 8080
